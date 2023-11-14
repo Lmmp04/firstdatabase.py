@@ -1,0 +1,32 @@
+#!/bin/python
+
+#This script is to be used as a reference for how to create a database
+#As of 2/25/2021 Im attempting to learn how to inser user input or any data into the DB
+# -Lmmp04
+
+import os
+import sqlite3
+
+connect = sqlite3.connect('survey.db')
+
+c = connect.cursor()
+
+#The following code makes a table for the name input in the survey
+c.execute('''CREATE TABLE Names
+    ([generated_id] INTEGER PRIMARY KEY, [Users_name] text)''')
+
+#Creating table for age from survey input
+c.execute('''CREATE TABLE AGE
+    ([generated_id] INTEGER PRIMARY KEY, [Age] integer)''')
+   
+#Creating table for favorite color from survey question 3
+c.execute('''CREATE TABLE Favorite_Color
+    ([generated_id] INTEGER PRIMARY KEY, [Favorite_Color] text)''')
+   
+#Creating a table to view all 3 survey answer data
+
+c.execute('''CREATE TABLE All_Data
+    ([generated_id] INTEGER PRIMARY KEY, [Users_name] text, [Age] integer, [Favorite_Color] text)''')
+   
+connect.commit()
+
